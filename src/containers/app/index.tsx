@@ -6,6 +6,7 @@ import { store } from 'store';
 
 import { Routing } from 'containers/routing';
 import { AppHeader } from './components/app-header';
+import { ErrorBoundary } from 'containers/error-boundary';
 
 import * as S from './styles';
 
@@ -16,7 +17,10 @@ export const App = () => {
         <S.GlobalStyle />
         <S.Container>
           <AppHeader />
-          <Routing />
+
+          <ErrorBoundary>
+            <Routing />
+          </ErrorBoundary>
         </S.Container>
       </BrowserRouter>
     </Provider>
