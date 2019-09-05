@@ -16,7 +16,6 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: #eee;
-    min-height: 100vh;
   }
 
   body, h1, h2, h3, h4, h5, h6, p, ol, ul {
@@ -37,8 +36,17 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  ::selection {
+    background-color: #ffb700;
+  }
 `;
 
 export const Container = styled.div`
+  min-height: 100vh;
+
   padding: 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

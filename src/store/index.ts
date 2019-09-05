@@ -1,10 +1,12 @@
 import thunk from 'redux-thunk';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 
 import { postsReducer } from './posts';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { expandedPostReducer } from './expanded-post';
 
 const reducers = {
   posts: postsReducer,
+  expandedPost: expandedPostReducer,
 };
 
 const rootReducer = combineReducers(reducers);

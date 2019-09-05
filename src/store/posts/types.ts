@@ -1,12 +1,41 @@
-import { Post } from 'types/post.type';
+import { PostType } from 'types/post.type';
 import { Thunky } from 'store/types';
 
-export const ADD_POST = '@POSTS:ADD_POST';
+export const FETCH_POSTS_REQUEST = '@POSTS:FETCH_POSTS_REQUEST';
+export const FETCH_POSTS_SUCCESS = '@POSTS:FETCH_POSTS_SUCCESS';
+export const FETCH_POSTS_FAILURE = '@POSTS:FETCH_POSTS_FAILURE';
+export const FETCH_POSTS_FINALIZE = '@POSTS:FETCH_POSTS_FINALIZE';
 
-type AddPost = {
-  type: typeof ADD_POST;
-  payload: Post;
+export const UPDATE_POST = '@POSTS:UPDATE_POST';
+
+type FetchPostsRequest = {
+  type: typeof FETCH_POSTS_REQUEST;
 };
 
-export type PostsAction = AddPost;
-export type AsyncPostsAction = Thunky<AddPost>;
+type FetchPostsSuccess = {
+  type: typeof FETCH_POSTS_SUCCESS;
+  payload: PostType[];
+};
+
+type FetchPostsFailure = {
+  type: typeof FETCH_POSTS_FAILURE;
+  payload: string;
+};
+
+type FetchPostsFinalize = {
+  type: typeof FETCH_POSTS_FINALIZE;
+};
+
+type UpdatePost = {
+  type: typeof UPDATE_POST;
+  payload: PostType;
+};
+
+export type PostsAction =
+  | FetchPostsRequest
+  | FetchPostsSuccess
+  | FetchPostsFailure
+  | FetchPostsFinalize
+  | UpdatePost;
+
+export type AsyncPostsAction = Thunky<PostsAction>;

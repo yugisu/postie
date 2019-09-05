@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.header`
+  z-index: 100;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -8,12 +10,25 @@ export const Container = styled.header`
   width: 100%;
   height: 3rem;
 
-  padding: 0 5rem;
+  overflow: hidden;
+  padding: 0 10rem;
   display: flex;
   align-items: center;
 
   background: white;
   box-shadow: 0 0 18px -5px rgba(0, 0, 0, 0.1);
+`;
+
+const appear = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(15%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 `;
 
 export const Logo = styled.div`
@@ -24,6 +39,7 @@ export const Logo = styled.div`
 
   user-select: none;
   transition: color 0.5s;
+  animation: ${appear} 0.5s;
 
   > a {
     display: contents;
